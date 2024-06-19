@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
 
 // Basic Configuration
 const port = process.env.PORT || 3000;
@@ -19,8 +20,10 @@ app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/api/shorturl', (req, res) => {
+
   //console.log(req.baseUrl);
   /*
   var cache = [];
@@ -37,11 +40,13 @@ app.post('/api/shorturl', (req, res) => {
   cache = null; // Enable garbage collection
   console.log(stringifiedReq);
   */
-  const { URL } = req.body;
-  console.log('URL: ' + URL);
+  const { url } = req.body;
+
+  console.log('URL: ' + url);
   console.log('req.body: ' + req.body);
-  console.log('req.get(host): ' + req.get('host'));
-  console.log('req.originalUrl: ' + req.originalUrl);
+  //console.log('req.get(host): ' + req.get('host'));
+  //console.log('req.originalUrl: ' + req.originalUrl);
+
   let responseOriginal = req.baseUrl;
   res.json({
     original_url: req.get('host') + req.originalUrl,
