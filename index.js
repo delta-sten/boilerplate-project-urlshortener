@@ -37,6 +37,7 @@ app.post('/api/shorturl', (req, res) => {
   cache = null; // Enable garbage collection
   console.log(stringifiedReq);
   */
+  
   let responseOriginal = req.baseUrl;
   res.json({
     original_url: responseOriginal,
