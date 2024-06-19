@@ -20,7 +20,19 @@ app.get('/api/hello', function(req, res) {
 });
 
 app.post('/api/shorturl', (req, res) => {
-  console.log('req: ' + JSON.stringify(req));
+  var cache = [];
+  let stringifiedReq = JSON.stringify(circ, (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      // Duplicate reference found, discard key
+      if (cache.includes(value)) return;
+
+      // Store value in our collection
+      cache.push(value);
+    }
+    return value;
+  });
+  cache = null; // Enable garbage collection
+  console.log(stringifiedReq);
 });
 
 app.listen(port, function() {
