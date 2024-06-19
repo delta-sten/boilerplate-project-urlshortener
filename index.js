@@ -21,7 +21,7 @@ app.get('/api/hello', function(req, res) {
 
 
 app.post('/api/shorturl', (req, res) => {
-  console.log(req.baseUrl);
+  //console.log(req.baseUrl);
   /*
   var cache = [];
   let stringifiedReq = window.JSON.stringify(circ, (key, value) => {
@@ -37,6 +37,11 @@ app.post('/api/shorturl', (req, res) => {
   cache = null; // Enable garbage collection
   console.log(stringifiedReq);
   */
+  let responseOriginal = req.baseUrl;
+  res.json({
+    original_url: responseOriginal,
+    short_url: 1
+  })
 });
 
 app.listen(port, function() {
