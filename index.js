@@ -38,8 +38,9 @@ app.post('/api/shorturl', (req, res) => {
   console.log(stringifiedReq);
   */
 
-  console.log(req.get('host'));
-  console.log(req.originalUrl);
+  console.log('req.body: ' + req.body);
+  console.log('req.get(host): ' + req.get('host'));
+  console.log('req.originalUrl: ' + req.originalUrl);
   let responseOriginal = req.baseUrl;
   res.json({
     original_url: req.get('host') + req.originalUrl,
