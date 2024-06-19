@@ -37,7 +37,8 @@ app.post('/api/shorturl', (req, res) => {
   cache = null; // Enable garbage collection
   console.log(stringifiedReq);
   */
-
+  const { URL } = req.body;
+  console.log('URL: ' + URL);
   console.log('req.body: ' + req.body);
   console.log('req.get(host): ' + req.get('host'));
   console.log('req.originalUrl: ' + req.originalUrl);
