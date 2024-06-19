@@ -20,7 +20,7 @@ app.get('/api/hello', function(req, res) {
 });
 
 app.post('/api/shorturl', (req, res) => {
-  console.log('req: ' + req[0]);
+  console.log('req: ' + req[1]);
 });
 
 app.listen(port, function() {
