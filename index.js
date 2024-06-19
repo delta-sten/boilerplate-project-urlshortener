@@ -19,9 +19,10 @@ app.get('/api/hello', function(req, res) {
   res.json({ greeting: 'hello API' });
 });
 
+
 app.post('/api/shorturl', (req, res) => {
   var cache = [];
-  let stringifiedReq = JSON.stringify(circ, (key, value) => {
+  let stringifiedReq = window.JSON.stringify(circ, (key, value) => {
     if (typeof value === 'object' && value !== null) {
       // Duplicate reference found, discard key
       if (cache.includes(value)) return;
