@@ -49,7 +49,7 @@ app.post('/api/shorturl', (req, res) => {
 
   let responseOriginal = req.baseUrl;
   res.json({
-    original_url: req.get('host') + req.originalUrl,
+    original_url: url,
     short_url: 1
   })
 });
