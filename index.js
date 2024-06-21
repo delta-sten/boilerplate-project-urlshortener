@@ -23,35 +23,24 @@ app.get('/api/hello', function(req, res) {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/api/shorturl', (req, res) => {
+  let randomNumber = Math.random().toString();
+  randomNumber = randomNumber.substring(2, randomNumber.length);
+  res.cookie("apikey", randomNumber, {maxAge: 900000, httpOnly: true});
 
-  //console.log(req.baseUrl);
-  /*
-  var cache = [];
-  let stringifiedReq = window.JSON.stringify(circ, (key, value) => {
-    if (typeof value === 'object' && value !== null) {
-      // Duplicate reference found, discard key
-      if (cache.includes(value)) return;
-
-      // Store value in our collection
-      cache.push(value);
-    }
-    return value;
-  });
-  cache = null; // Enable garbage collection
-  console.log(stringifiedReq);
-  */
   const { url } = req.body;
 
   console.log('URL: ' + url);
   console.log('req.body: ' + req.body);
-  //console.log('req.get(host): ' + req.get('host'));
-  //console.log('req.originalUrl: ' + req.originalUrl);
 
-  let responseOriginal = req.baseUrl;
+  //let responseOriginal = req.baseUrl;
   res.json({
     original_url: url,
     short_url: 1
   })
+});
+
+app.get('/api/shorturl/', (req, res) => {
+  
 });
 
 app.listen(port, function() {
