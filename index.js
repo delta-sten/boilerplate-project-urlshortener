@@ -71,10 +71,12 @@ app.post('/api/shorturl', (req, res) => {
   console.log('req.body: ' + req.body);
   let shortUrlNum = Math.floor(Math.random() * 100000);
   let newEntry = new entry({original_url: url, short_url: shortUrlNum});
+/*
   newEntry.save(function(err,data) {
     if (err) {return console.error(err); }
     document(null, data);
   });
+  */
 
   //let responseOriginal = req.baseUrl;
   res.json({
