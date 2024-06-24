@@ -23,9 +23,11 @@ app.get('/api/hello', function(req, res) {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/api/shorturl', (req, res) => {
+/*
   let randomNumber = Math.random().toString();
   randomNumber = randomNumber.substring(2, randomNumber.length);
   res.cookie("apikey", randomNumber, {maxAge: 900000, httpOnly: true});
+  */
 
   const { url } = req.body;
 
@@ -40,9 +42,17 @@ app.post('/api/shorturl', (req, res) => {
 });
 
 app.get('/api/shorturl/', (req, res) => {
-  
+  //let apikey = req.cookies.apikey;
+
 });
 
 app.listen(port, function() {
   console.log(`Listening on port ${port}`);
 });
+
+
+
+
+//username: stenschmidt
+//password: cH7j5cQElHtp8EbX
+
