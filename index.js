@@ -8,7 +8,6 @@ const { Schema } = mongoose;
 
 mongoose.connect(provess.env.MONGO_URI);
 
-const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://stenschmidt:w7BUdk8iHGcbEls6@cluster0.ciykdxe.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
 
 let entry;
