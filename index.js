@@ -3,15 +3,18 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+mongoose.connect(provess.env.MONGO_URI);
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://stenschmidt:w7BUdk8iHGcbEls6@cluster0.ciykdxe.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
 
 let entry;
-const Schema = mongoose.Schema;
 const urlSchema = new Schema({
-  original_url: {type: String, required: true},
-  short_url: {type: Number, required: true}
+  original_url: String,
+  short_url: Number
 });
 entry = mongoose.model("entry", urlSchema);
 
@@ -58,7 +61,7 @@ app.get('/api/hello', function(req, res) {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/api/shorturl', (req, res) => {
+app.post('/api/shorturl', async (req, res) => {
 /*
   let randomNumber = Math.random().toString();
   randomNumber = randomNumber.substring(2, randomNumber.length);
@@ -71,7 +74,15 @@ app.post('/api/shorturl', (req, res) => {
   console.log('req.body: ' + req.body);
   let shortUrlNum = Math.floor(Math.random() * 100000);
   let newEntry = new entry({original_url: url, short_url: shortUrlNum});
-/*
+
+  try {
+    const user = await newEntry.save();
+    res.json(user);
+  } catch(err) {
+    console.log(err);
+  }
+
+  /*
   newEntry.save(function(err,data) {
     if (err) {return console.error(err); }
     document(null, data);
@@ -79,10 +90,12 @@ app.post('/api/shorturl', (req, res) => {
   */
 
   //let responseOriginal = req.baseUrl;
+  /*
   res.json({
     original_url: url,
     short_url: shortUrlNum
   })
+  */
 });
 
 app.get('/api/shorturl/', (req, res) => {
