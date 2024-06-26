@@ -8,7 +8,6 @@ const { Schema } = mongoose;
 
 mongoose.connect(process.env.MONGO_URI);
 
-mongoose.connect('mongodb+srv://stenschmidt:w7BUdk8iHGcbEls6@cluster0.ciykdxe.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
 
 let entry;
 const urlSchema = new Schema({
