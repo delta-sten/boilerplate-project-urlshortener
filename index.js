@@ -72,8 +72,10 @@ app.post('/api/shorturl', async (req, res) => {
 
   const { url } = req.body;
 
-  console.log('URL: ' + url);
-  console.log('req.body: ' + req.body);
+  let queryString = window.location.search;
+  console.log('queryString: ' + queryString);
+  //console.log('URL: ' + url);
+  //console.log('req.body: ' + req.body);
   let shortUrlNum = Math.floor(Math.random() * 100000);
   let newEntry = new entry({original_url: url, short_url: shortUrlNum});
 
