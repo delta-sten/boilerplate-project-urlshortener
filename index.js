@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+import { useEffect } from "react";
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -71,11 +72,15 @@ app.post('/api/shorturl', async (req, res) => {
   */
 
   const { url } = req.body;
-  let queryString = null;
-  if (typeof window !== "undefined") {
-    queryString = window.location.search;
-    console.log('queryString: ' + queryString);
-  }
+
+  useEffect(() => {
+    let queryString = null;
+    if (typeof window !== "undefined") {
+      queryString = window.location.search;
+      console.log('queryString: ' + queryString);
+    }
+  }, []);
+
   //console.log('URL: ' + url);
   //console.log('req.body: ' + req.body);
   let shortUrlNum = Math.floor(Math.random() * 100000);
