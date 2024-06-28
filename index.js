@@ -59,6 +59,10 @@ app.get('/api/hello', function(req, res) {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+function getURL(url) {
+  entry.findOne({short_url: url}, )
+};
+
 app.post('/api/shorturl', async (req, res) => {
 /*
   let randomNumber = Math.random().toString();
@@ -80,23 +84,13 @@ app.post('/api/shorturl', async (req, res) => {
     console.log(err);
   }
 
-  /*
-  newEntry.save(function(err,data) {
-    if (err) {return console.error(err); }
-    document(null, data);
-  });
-  */
-
-  //let responseOriginal = req.baseUrl;
-  /*
-  res.json({
-    original_url: url,
-    short_url: shortUrlNum
-  })
-  */
 });
 
+
+
 app.get('/api/shorturl/', (req, res) => {
+  let queryString = window.location.search;
+  console.log('queryString: ' + queryString);
   //let apikey = req.cookies.apikey;
 
 });
