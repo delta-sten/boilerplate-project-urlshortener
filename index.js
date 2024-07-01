@@ -102,8 +102,9 @@ app.post('/api/shorturl', async (req, res) => {
 app.get("/api/shorturl/:hash", async (req, res) => {
   console.log("app.get(/:hash, works");
   let inputNum = Number(req.params.hash);
-  let actualURL = await entry.find({ short_url: inputNum}).exec();
-  console.log('actual URL: ' + actualURL);
+  let URLentries = await entry.find({ short_url: inputNum}).exec();
+  console.log('actual URL: ' + URLentries);
+  res.redirect(URLentries.original_url);
   //window.location.href = actualURL
   //res.send(window.location.href);
 });
