@@ -99,11 +99,10 @@ app.post('/api/shorturl', async (req, res) => {
 
 
 
-app.get('/api/shorturl', (req, res) => {
-  let queryString = window.location.search;
-  console.log('queryString: ' + queryString);
-  //let apikey = req.cookies.apikey;
-
+app.get("/:hash", async (req, res) => {
+  let inputNum = Number(req.params.hash);
+  let actualURL = await entry.find({ short_url: inputNum}).exec();
+  console.log(actualURL);
 });
 
 app.listen(port, function() {
