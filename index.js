@@ -106,8 +106,10 @@ app.get("/api/shorturl/:hash", async (req, res) => {
     let URLentries = await entry.find({ short_url: inputNum}).exec();
     console.log('actual URL: ' + URLentries);
     res.redirect(URLentries.original_url);
+  } else {
+    res.sendStatus(404);
   }
-  res.sendStatus(404);
+  
   
   //window.location.href = actualURL
   //res.send(window.location.href);
