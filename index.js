@@ -104,6 +104,8 @@ app.get("/:hash", async (req, res) => {
   let inputNum = Number(req.params.hash);
   let actualURL = await entry.find({ short_url: inputNum}).exec();
   console.log('actual URL: ' + actualURL);
+  window.location.href = actualURL
+  res.send(window.location.href);
 });
 
 app.listen(port, function() {
