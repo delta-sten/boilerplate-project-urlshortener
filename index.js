@@ -99,14 +99,15 @@ app.post('/api/shorturl', async (req, res) => {
 
 
 
-app.get("/:hash", async (req, res) => {
+app.get("/api/shorturl/:hash", async (req, res) => {
   console.log("app.get(/:hash, works");
   let inputNum = Number(req.params.hash);
   let actualURL = await entry.find({ short_url: inputNum}).exec();
   console.log('actual URL: ' + actualURL);
-  window.location.href = actualURL
-  res.send(window.location.href);
+  //window.location.href = actualURL
+  //res.send(window.location.href);
 });
+
 
 app.listen(port, function() {
   console.log(`Listening on port ${port}`);
