@@ -81,7 +81,7 @@ app.post('/api/shorturl', async (req, res) => {
     }
   }, []);
   */
- console.log(req);
+ //console.log(req);
 
   //console.log('URL: ' + url);
   //console.log('req.body: ' + req.body);
@@ -102,7 +102,7 @@ app.post('/api/shorturl', async (req, res) => {
 app.get("/:hash", async (req, res) => {
   let inputNum = Number(req.params.hash);
   let actualURL = await entry.find({ short_url: inputNum}).exec();
-  console.log(actualURL);
+  console.log('actual URL: ' + actualURL);
 });
 
 app.listen(port, function() {
