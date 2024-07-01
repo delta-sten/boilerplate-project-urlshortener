@@ -86,14 +86,19 @@ app.post('/api/shorturl', async (req, res) => {
   //console.log('URL: ' + url);
   //console.log('req.body: ' + req.body);
   let shortUrlNum = Math.floor(Math.random() * 100000);
-  let newEntry = new entry({original_url: url, short_url: shortUrlNum});
+  if (url.slice(0, 7) !== "http://") {
+    let newEntry = new entry({original_url: url, short_url: shortUrlNum});
 
-  try {
-    const user = await newEntry.save();
-    res.json(user);
-  } catch(err) {
-    console.log(err);
+    try {
+     const user = await newEntry.save();
+      res.json(user);
+    } catch(err) {
+      console.log(err);
+    }
+  } else {
+    res.json({error: 'invalid url'});
   }
+  
 
 });
 
