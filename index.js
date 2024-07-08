@@ -111,7 +111,7 @@ app.get("/api/shorturl/:hash", async (req, res) => {
     let inputNum = Number(req.params.hash);
     let URLentries = await entry.find({ short_url: inputNum}).exec();
     console.log('actual URL: ' + URLentries);
-    console.log(URLentries["original_url"]);
+    console.log('URLentries[1]: ' + URLentries[1]);
     res.redirect(URLentries.original_url);
   } else {
     res.send({error: 'invalid url'});
