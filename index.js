@@ -118,7 +118,7 @@ app.get("/api/shorturl/:hash", async (req, res) => {
     }
     */
     Object.keys(URLentries).forEach(function (value) {
-      console.log(data[value]);
+      console.log(URLentries[value]);
     });
 /*
     console.log('typeof(URLentries): ' + typeof(URLentries));
