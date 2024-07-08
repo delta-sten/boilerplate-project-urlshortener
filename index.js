@@ -109,7 +109,7 @@ app.get("/api/shorturl/:hash", async (req, res) => {
   if ((req.params.hash !== undefined) && (req.params.hash !== "undefined") ) {
     console.log("req.params.hash: " + req.params.hash);
     let inputNum = Number(req.params.hash);
-    let URLentries = await entry.find({ short_url: inputNum}).exec();
+    let URLentries = await entry.findOne({ short_url: inputNum}).exec();
     console.log('actual URL: ' + URLentries);
     /* 
     not useful
@@ -120,6 +120,7 @@ app.get("/api/shorturl/:hash", async (req, res) => {
    console.log("________");
    //VERY USEFUL
     Object.keys(URLentries).forEach(function (value) {
+
       console.log(URLentries[value]);
     });
     console.log("________");
