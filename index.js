@@ -113,7 +113,7 @@ app.get("/api/shorturl/:hash", async (req, res) => {
     //console.log('actual URL: ' + URLentries);
     //console.log('URLentries[1]: ' + URLentries[1]);
     //console.log('typeof(URLentries): ' + typeof(URLentries));
-    res.redirect(URLentries["original_url"]);
+    res.redirect(URLentries[1]);
   } else {
     res.send({error: 'invalid url'});
   }
