@@ -110,7 +110,6 @@ app.get("/api/shorturl/:hash", async (req, res) => {
     console.log("req.params.hash: " + req.params.hash);
     let inputNum = Number(req.params.hash);
     let URLentries = await entry.findOne({ short_url: inputNum}).exec();
-
     console.log('actual URL: ' + URLentries);
     /* 
     not useful
